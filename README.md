@@ -1,4 +1,4 @@
-# FrameNet NLTK
+# Lexical data annotation tool
 
 The goal of this package is to create the lexical data that is used in https://github.com/cltl/frame-annotation-tool.
 
