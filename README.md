@@ -57,7 +57,7 @@ The next step is to add language-specific lexicon information
 
 ```python
 import LexicalDataDTDAnnotationTool
-from LexicalDataDTDAnnotationTool import add_lu_to_frames
+from LexicalDataDTDAnnotationTool import add_lu_to_info
 from nltk.corpus import framenet as fn
 
 add_lu_to_info(your_fn=fn,
@@ -80,7 +80,7 @@ lu_url (created based on the provided namespace)
     attributes of the lexical unit
  ```
 
-Function 4: mapping lemma to pos to lu_url
+## Function 4: mapping lemma to pos to lu_url
 
 After running step 3, there is a file called *lu_to_info.json*
 for each language. 
