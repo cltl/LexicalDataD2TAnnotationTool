@@ -9,7 +9,7 @@ from .rdf_utils import get_fe_uris_and_labels
 
 from .utils import remove_and_create_folder
 
-from .res.FrameNetNLTK import generate_lu_rdf_uri
+from .res.FrameNetNLTK import generate_lu_rdf_uri, generate_lexicon_rdf_uri
 
 
 def lemma_from_lexemes(lexemes,
@@ -174,6 +174,7 @@ def add_lu_to_info(your_fn,
         'lu_id' : the lu identifier
         'lu_definition' : the lu definition
         'lexical_entries' : list of tuples (lemma, pos)
+        'lexicon_uri' : uri of the lexicon to which this lu belongs
 
     :param your_fn: a FrameNet in NLTK format
     :param str language: nl (Dutch) and en (English) are supported
@@ -206,6 +207,11 @@ def add_lu_to_info(your_fn,
         for lu_label, lu in frame.lexUnit.items():
             pos = lu.POS
 
+            lexicon_url = generate_lexicon_rdf_uri(namespace=namespace,
+                                                   language=language,
+                                                   major_version=major_version,
+                                                   minor_version=minor_version)
+
             lu_url = generate_lu_rdf_uri(your_fn=your_fn,
                                          namespace=namespace,
                                          language=language,
@@ -228,7 +234,8 @@ def add_lu_to_info(your_fn,
                 'lu_name' : lu_label,
                 'lexical_entries' : list(lexical_entries),
                 'frame_uri' : frame_rdf_uri,
-                'frame_label' : label
+                'frame_label' : label,
+                'lexicon_uri' : lexicon_url
             }
 
             lu_to_info[lu_url] = info

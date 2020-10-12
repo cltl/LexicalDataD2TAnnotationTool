@@ -134,7 +134,7 @@ update_typical_frames(output_folder='LexicalDataDTDAnnotationTool/test/lexicon_d
 ```
 
 This will update the JSON file with the scores as provided by frame_to_typicality.
-You can choose between two formats (see **frame_format**): fn_lable | premon_frame_uri.
+You can choose between two formats (see **frame_format**): fn_label | premon_frame_uri.
 
 #### Function 6: create lexical lookup per event type
 
@@ -171,7 +171,12 @@ This function will generate a JSON file at typicality/lexical_lookup/LANGUAGE/EV
     'lexical_lookup'
         LEMMA
             POS
-                [typicality_score, PreMON frame URI, LU_NAME, LU_URI, dropdown label]
+                [typicality_score,
+                 dropdown_label,
+                 frame_uri,
+                 lu_uri,
+                 lu_name,
+                 lexicon_url]
             'all_frames':
                 [PreMOn frame URI, PreMOn URI, ...]
 ```

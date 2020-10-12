@@ -191,6 +191,7 @@ def create_lexical_lookup_per_eventtype(event_type,
 
                 lu_info = lu_to_info[lu_uri]
                 lu_name = lu_info['lu_name']
+                lexicon_url = lu_info['lexicon_uri']
 
                 frame_uri = lu_info['frame_uri']
                 frame_label = lu_info['frame_label']
@@ -202,7 +203,8 @@ def create_lexical_lookup_per_eventtype(event_type,
                                dropdown_label,
                                frame_uri,
                                lu_uri,
-                               lu_name])
+                               lu_name,
+                               lexicon_url])
 
                 frames_for_lemma.add(frame_uri)
 
