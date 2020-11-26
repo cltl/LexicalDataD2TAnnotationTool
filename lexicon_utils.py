@@ -9,7 +9,7 @@ from .rdf_utils import get_fe_uris_and_labels
 
 from .utils import remove_and_create_folder
 
-from .res.FrameNetNLTK import generate_lu_rdf_uri, generate_lexicon_rdf_uri
+from .res.FrameNetNLTK import generate_le_and_lu_rdf_uri, generate_lexicon_rdf_uri
 
 
 def lemma_from_lexemes(lexemes,
@@ -187,6 +187,13 @@ def add_lu_to_info(your_fn,
     """
     assert language in {'en', 'nl'}, f'specified language ({language}) is not supported: nl | en'
 
+    two_char_lang_to_three_char_lang = {
+        'en' : 'eng',
+        'nl' : 'nld'
+    }
+
+    rdf_lang = two_char_lang_to_three_char_lang[language]
+
     # remove and create dir if needed
     lexicons_folder = os.path.join(output_folder, 'lexicons')
     if not os.path.exists(lexicons_folder):
@@ -208,16 +215,16 @@ def add_lu_to_info(your_fn,
             pos = lu.POS
 
             lexicon_url = generate_lexicon_rdf_uri(namespace=namespace,
-                                                   language=language,
+                                                   language=rdf_lang,
                                                    major_version=major_version,
                                                    minor_version=minor_version)
 
-            lu_url = generate_lu_rdf_uri(your_fn=your_fn,
-                                         namespace=namespace,
-                                         language=language,
-                                         major_version=major_version,
-                                         minor_version=minor_version,
-                                         lu_id=lu.ID)
+            le_rdf_uri, leform_rdf_uri, lu_rdf_uri = generate_le_and_lu_rdf_uri(your_fn=your_fn,
+                                                                                namespace=namespace,
+                                                                                language=rdf_lang,
+                                                                                major_version=major_version,
+                                                                                minor_version=minor_version,
+                                                                                lu_id=lu.ID)
 
             # get lexical entries
             lexical_entries = set()
@@ -238,7 +245,7 @@ def add_lu_to_info(your_fn,
                 'lexicon_uri' : lexicon_url
             }
 
-            lu_to_info[lu_url] = info
+            lu_to_info[lu_rdf_uri] = info
 
     if verbose:
         print(f'found info for {len(lu_to_info)} LUs')

@@ -16,6 +16,7 @@ cd res
 git clone https://github.com/cltl/FrameNetNLTK
 cd FrameNetNLTK
 pip install -r requirements.txt
+bash install.sh
 cd ..
 
 touch __init__.py

@@ -3,10 +3,10 @@ import pathlib
 import sys
 sys.path.append('../../')
 
-import LexicalDataDTDAnnotationTool
-from LexicalDataDTDAnnotationTool import initialize_typical_frames
-from LexicalDataDTDAnnotationTool import update_typical_frames
-from LexicalDataDTDAnnotationTool import create_lexical_lookup_per_eventtype
+import LexicalDataD2TAnnotationTool
+from LexicalDataD2TAnnotationTool import initialize_typical_frames
+from LexicalDataD2TAnnotationTool import update_typical_frames
+from LexicalDataD2TAnnotationTool import create_lexical_lookup_per_eventtype
 
 from nltk.corpus import framenet as fn
 
@@ -20,7 +20,7 @@ premon_nt_path = f'{parent}/res/premon/premon-2018a-fn17-noinf.nt'
 
 initialize_typical_frames(output_folder=out_dir,
                           fn_en=fn,
-                          premon=LexicalDataDTDAnnotationTool.premon,
+                          premon=LexicalDataD2TAnnotationTool.premon,
                           event_type='Q40231',
                           overwrite=True,
                           verbose=2)
@@ -32,7 +32,7 @@ frame_to_typicality = {
 }
 
 update_typical_frames(output_folder=out_dir,
-                      premon=LexicalDataDTDAnnotationTool.premon,
+                      premon=LexicalDataD2TAnnotationTool.premon,
                       event_type='Q40231',
                       frame_to_typicality=frame_to_typicality,
                       frame_format='fn_label',
@@ -43,7 +43,7 @@ frame_to_typicality = {
 }
 
 update_typical_frames(output_folder=out_dir,
-                      premon=LexicalDataDTDAnnotationTool.premon,
+                      premon=LexicalDataD2TAnnotationTool.premon,
                       event_type='Q40231',
                       frame_to_typicality=frame_to_typicality,
                       frame_format='premon_frame_uri',
@@ -52,14 +52,14 @@ update_typical_frames(output_folder=out_dir,
 
 create_lexical_lookup_per_eventtype(event_type='Q40231',
                                     language='nl',
-                                    premon=LexicalDataDTDAnnotationTool.premon,
+                                    premon=LexicalDataD2TAnnotationTool.premon,
                                     output_folder=out_dir,
                                     overwrite=True,
                                     verbose=2)
 
 create_lexical_lookup_per_eventtype(event_type='Q40231',
                                     language='en',
-                                    premon=LexicalDataDTDAnnotationTool.premon,
+                                    premon=LexicalDataD2TAnnotationTool.premon,
                                     output_folder=out_dir,
                                     overwrite=True,
                                     verbose=2)

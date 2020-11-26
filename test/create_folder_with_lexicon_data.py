@@ -4,10 +4,10 @@ from nltk.corpus import framenet as fn
 
 sys.path.append('../../')
 
-import LexicalDataDTDAnnotationTool
-from LexicalDataDTDAnnotationTool import create_lexicon_data_annotation_tool
-from LexicalDataDTDAnnotationTool import add_frame_to_info
-from LexicalDataDTDAnnotationTool import add_lu_to_info, add_lemma_to_pos_to_lu_urls
+import LexicalDataD2TAnnotationTool
+from LexicalDataD2TAnnotationTool import create_lexicon_data_annotation_tool
+from LexicalDataD2TAnnotationTool import add_frame_to_info
+from LexicalDataD2TAnnotationTool import add_lu_to_info, add_lemma_to_pos_to_lu_urls
 
 from FrameNetNLTK import load
 
@@ -26,14 +26,14 @@ create_lexicon_data_annotation_tool(path_readme=f'{parent}/doc/lexicon_data_for_
 
 add_frame_to_info(output_folder=out_dir,
                   fn_en=fn,
-                  premon=LexicalDataDTDAnnotationTool.premon,
+                  premon=LexicalDataD2TAnnotationTool.premon,
                   verbose=2)
 
 
 add_lu_to_info(your_fn=fn,
                language='en',
-               premon=LexicalDataDTDAnnotationTool.premon,
-               namespace='http://rdf.cltl.nl/',
+               premon=LexicalDataD2TAnnotationTool.premon,
+               namespace='http://rdf.cltl.nl/efn/',
                major_version=1,
                minor_version=7,
                output_folder=out_dir,
@@ -47,8 +47,8 @@ fn_nl = load('res/DutchFrameNet-0.1')
 
 add_lu_to_info(your_fn=fn_nl,
                language='nl',
-               premon=LexicalDataDTDAnnotationTool.premon,
-               namespace='http://rdf.cltl.nl/',
+               premon=LexicalDataD2TAnnotationTool.premon,
+               namespace='http://rdf.cltl.nl/dfn/',
                major_version=0,
                minor_version=1,
                output_folder=out_dir,

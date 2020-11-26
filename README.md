@@ -27,12 +27,12 @@ into your requested output folder.
 
 ```python 
 
-from LexicalDataDTDAnnotationTool import create_lexicon_data_annotation_tool
+from LexicalDataD2TAnnotationTool import create_lexicon_data_annotation_tool
 
-create_lexicon_data_annotation_tool(path_readme='LexicalDataDTDAnnotationTool/doc/lexicon_data_for_frame_annotation_tool/README.md',
-                                    path_ud_information='LexicalDataDTDAnnotationTool/doc/lexicon_data_for_frame_annotation_tool/part_of_speech_ud_info.json',
-                                    path_mapping_ud_pos_to_fn_pos='LexicalDataDTDAnnotationTool/doc/lexicon_data_for_frame_annotation_tool/ud_pos_to_fn_pos.json',
-                                    output_folder='LexicalDataDTDAnnotationTool/test/lexicon_data_for_frame_annotation_tool',
+create_lexicon_data_annotation_tool(path_readme='LexicalDataD2TAnnotationTool/doc/lexicon_data_for_frame_annotation_tool/README.md',
+                                    path_ud_information='LexicalDataD2TAnnotationTool/doc/lexicon_data_for_frame_annotation_tool/part_of_speech_ud_info.json',
+                                    path_mapping_ud_pos_to_fn_pos='LexicalDataD2TAnnotationTool/doc/lexicon_data_for_frame_annotation_tool/ud_pos_to_fn_pos.json',
+                                    output_folder='LexicalDataD2TAnnotationTool/test/lexicon_data_for_frame_annotation_tool',
                                     verbose=2)
 ```
 
@@ -41,13 +41,13 @@ Once the folder has been created, you can add a file containing information abou
 using:
 
 ```python 
-import LexicalDataDTDAnnotationTool,
-from LexicalDataDTDAnnotationTool import add_frame_to_info
+import LexicalDataD2TAnnotationTool,
+from LexicalDataD2TAnnotationTool import add_frame_to_info
 from nltk.corpus import framenet as fn
 
-add_frame_to_info(output_folder='LexicalDataDTDAnnotationTool/test/lexicon_data_for_frame_annotation_tool',
+add_frame_to_info(output_folder='LexicalDataD2TAnnotationTool/test/lexicon_data_for_frame_annotation_tool',
                   fn_en=fn,
-                  premon=LexicalDataDTDAnnotationTool.premon,
+                  premon=LexicalDataD2TAnnotationTool.premon,
                   verbose=0)
 ```
 This will add the file **frame_to_info.json** to the output folder.
@@ -56,13 +56,13 @@ This will add the file **frame_to_info.json** to the output folder.
 The next step is to add language-specific lexicon information
 
 ```python
-import LexicalDataDTDAnnotationTool
-from LexicalDataDTDAnnotationTool import add_lu_to_info
+import LexicalDataD2TAnnotationTool
+from LexicalDataD2TAnnotationTool import add_lu_to_info
 from nltk.corpus import framenet as fn
 
 add_lu_to_info(your_fn=fn,
                language='en',
-               premon=LexicalDataDTDAnnotationTool.premon,
+               premon=LexicalDataD2TAnnotationTool.premon,
                namespace='http://rdf.cltl.nl/',
                major_version=1,
                minor_version=7,
@@ -86,7 +86,7 @@ After running step 3, there is a file called *lu_to_info.json*
 for each language. 
 You can also generate a mapping from a lemma to a POS to the lu urls by calling the following function.
 ```
-from LexicalDataDTDAnnotationTool import add_lemma_to_pos_to_lu_urls
+from LexicalDataD2TAnnotationTool import add_lemma_to_pos_to_lu_urls
 
 add_lemma_to_pos_to_lu_urls(output_folder=out_dir,
                             language='nl',
@@ -101,12 +101,12 @@ This will add *lemma_to_pos_to_lus.json* to the lexicon folder of the language.
 
 ```python
 from nltk.corpus import framenet as fn
-import LexicalDataDTDAnnotationTool
-from LexicalDataDTDAnnotationTool import initialize_typical_frames
+import LexicalDataD2TAnnotationTool
+from LexicalDataD2TAnnotationTool import initialize_typical_frames
 
-initialize_typical_frames(output_folder='LexicalDataDTDAnnotationTool/test/lexicon_data_for_frame_annotation_tool',
+initialize_typical_frames(output_folder='LexicalDataD2TAnnotationTool/test/lexicon_data_for_frame_annotation_tool',
                           fn_en=fn,
-                          premon=LexicalDataDTDAnnotationTool.premon,
+                          premon=LexicalDataD2TAnnotationTool.premon,
                           event_type='Q40231',
                           overwrite=False, # if False, will not be initialized if the file exists
                           verbose=2)
@@ -117,16 +117,16 @@ All scores are zero at this stage. The next function allows users to update the 
 #### Function 5b: update typicality frame scores
 
 ```python
-import LexicalDataDTDAnnotationTool
-from LexicalDataDTDAnnotationTool import update_typical_frames
+import LexicalDataD2TAnnotationTool
+from LexicalDataD2TAnnotationTool import update_typical_frames
 
 
 frame_to_typicality = {
     'http://premon.fbk.eu/resource/fn17-change_of_leadership' : 0.8,
 }
 
-update_typical_frames(output_folder='LexicalDataDTDAnnotationTool/test/lexicon_data_for_frame_annotation_tool',
-                      premon=LexicalDataDTDAnnotationTool.premon,
+update_typical_frames(output_folder='LexicalDataD2TAnnotationTool/test/lexicon_data_for_frame_annotation_tool',
+                      premon=LexicalDataD2TAnnotationTool.premon,
                       event_type='Q40231',
                       frame_to_typicality=frame_to_typicality,
                       frame_format='premon_frame_uri',
@@ -142,14 +142,14 @@ It is possible to create a lexical lookup per event type.
 
 ```python
 
-import LexicalDataDTDAnnotationTool
+import LexicalDataD2TAnnotationTool
 
-from LexicalDataDTDAnnotationTool import create_lexical_lookup_per_eventtype
+from LexicalDataD2TAnnotationTool import create_lexical_lookup_per_eventtype
 
 create_lexical_lookup_per_eventtype(event_type='Q40231',
                                     language='nl',
-                                    premon=LexicalDataDTDAnnotationTool.premon,
-                                    output_folder='LexicalDataDTDAnnotationTool/test/lexicon_data_for_frame_annotation_tool',
+                                    premon=LexicalDataD2TAnnotationTool.premon,
+                                    output_folder='LexicalDataD2TAnnotationTool/test/lexicon_data_for_frame_annotation_tool',
                                     overwrite=True,
                                     verbose=2)
 

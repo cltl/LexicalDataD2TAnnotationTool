@@ -10,3 +10,4 @@ unzip v0.1.zip
 git clone https://github.com/cltl/FrameNetNLTK
 cd FrameNetNLTK
 pip install -r requirements.txt
+bash install.sh
