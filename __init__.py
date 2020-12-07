@@ -13,6 +13,7 @@ from .typicality_utils import update_typical_frames
 
 from .typicality_utils import create_lexical_lookup_per_eventtype
 
+from .lexicon_utils import lemmas_from_lu_name
 
 ## loading
 import os
