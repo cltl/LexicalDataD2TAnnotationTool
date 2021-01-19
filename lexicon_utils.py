@@ -9,7 +9,10 @@ from .rdf_utils import get_fe_uris_and_labels
 
 from .utils import remove_and_create_folder
 
-from .res.FrameNetNLTK import generate_le_and_lu_rdf_uri, generate_lexicon_rdf_uri
+try:
+    from .res.FrameNetNLTK import generate_le_and_lu_rdf_uri, generate_lexicon_rdf_uri
+except ModuleNotFoundError:
+    print('please run bash install.sh')
 
 
 def lemma_from_lexemes(lexemes,
@@ -321,8 +324,6 @@ def add_lemma_to_pos_to_lu_urls(output_folder,
         print(f'{len(lemma_to_pos_to_lus)} lemmas contain a mapping to an LU.')
 
 
-
-
 def lemmas_from_lu_name(lu_lemma):
     """
 
@@ -376,11 +377,6 @@ assert lemmas == {'take life', "take someone's life"}
 
 lemmas = lemmas_from_lu_name(lu_lemma='take [picture]')
 assert lemmas == {'take', 'take picture'}
-
-
-
-
-
 
 
 

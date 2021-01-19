@@ -21,7 +21,10 @@ from .rdf_utils import load_nt_graph
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
 premon_nt = os.path.join(dir_path, 'res/premon/premon-2018a-fn17-noinf.nt')
-premon = load_nt_graph(nt_path=premon_nt)
+if os.path.exists(premon_nt):
+    premon = load_nt_graph(nt_path=premon_nt)
+else:
+    print('please run bash install.sh')
 
 
 
